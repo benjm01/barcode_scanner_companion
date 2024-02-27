@@ -2,12 +2,15 @@ import asyncio
 import websockets
 import socket
 import qrcode
+from pynput.keyboard import Key, Controller
 
 import tkinter as tk
 from PIL import ImageTk,Image
 
 import threading
 import queue
+
+keyboard = Controller()
 
 popup = tk.Tk()
 q = queue.Queue()
@@ -23,7 +26,7 @@ async def handler(websocket):
         except websockets.exceptions.ConnectionClosed:
             # exit handler
             break
-        print(message)
+        keyboard.type(message + '\n')
     stop.set_result("disconnected")
 
 
