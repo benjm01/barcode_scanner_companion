@@ -2,7 +2,7 @@ import asyncio
 import websockets
 import socket
 import qrcode
-from pynput.keyboard import Key, Controller
+from pynput.keyboard import Controller
 
 import tkinter as tk
 from PIL import ImageTk,Image
@@ -26,6 +26,7 @@ async def handler(websocket):
         except websockets.exceptions.ConnectionClosed:
             # exit handler
             break
+        # enter message as keyboard input
         keyboard.type(message + '\n')
     stop.set_result("disconnected")
 
