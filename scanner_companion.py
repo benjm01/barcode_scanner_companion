@@ -34,7 +34,7 @@ async def handler(websocket):
 async def server():
     global stop
     stop = asyncio.Future()
-    async with websockets.serve(handler, "", 8001):
+    async with websockets.serve(handler, "", 8001, ping_timeout= None):
         # wait for handler to finish
         await stop
 
